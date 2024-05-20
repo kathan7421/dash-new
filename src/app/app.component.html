@@ -1,0 +1,36 @@
+<!-- app.component.html -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet">
+
+<!-- Conditionally render layout, sidebar, and footer based on showLayout flag -->
+<ng-container *ngIf="showLayout">
+  <app-layout></app-layout>
+  <div class="d-flex">
+    <app-sidebar></app-sidebar>
+  </div>
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>Fixed Layout</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item"><a href="#">Layout</a></li>
+              <li class="breadcrumb-item active">Fixed Layout</li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+    <section class="content">
+      <router-outlet></router-outlet> <!-- This will load different components based on route -->
+    </section>
+  </div>
+  <app-footer></app-footer>
+</ng-container>
+<ng-container *ngIf="!showLayout">
+  <router-outlet></router-outlet> <!-- Only display the router-outlet for the login route -->
+</ng-container>
